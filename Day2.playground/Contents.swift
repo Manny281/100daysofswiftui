@@ -191,3 +191,149 @@ enum Music {
 
 let volume = Music.volumeLower(lower: 12)
 
+//100 days of swiftUI day 3//
+
+var beatles2 = ["john", "Paul", "George", "Ringo"]
+let numbers2 = [4, 8, 15, 16, 23, 42]
+var temperatures2 = [25.3, 28.2, 26.4]
+
+print(beatles2[0])
+print(numbers2[1])
+print(temperatures2[2])
+
+beatles2.append("Adrian")
+beatles2.append("Allen")
+beatles2.append("Noval")
+beatles2.append("Vivian")
+
+//starting with empty array//
+var scores2 = Array<Int>()
+scores2.append(100)
+scores2.append(80)
+scores2.append(85)
+print(scores2[1])
+
+var albums2 = Array<String>()
+albums2.append("Folklore")
+albums2.append("Fearless")
+albums2.append("Red")
+
+//same as above//
+var albums3 = [String]()
+albums3.append("Folklore")
+albums3.append("Fearless")
+albums3.append("Red")
+
+//starting with a array of strings//
+var albums4 = ["Folklore"]
+albums4.append("Fearless")
+albums4.append("Red")
+
+//removing from array//
+var characters2 = ["Lana", "Pam", "Ray", "Sterling"]
+print(characters2.count)
+
+characters2.remove(at: 2)
+print(characters2.count)
+
+characters2.removeAll()
+print(characters2.count)
+
+//check if contains//
+let bondMovies = ["Casino Royale", "Spectre", "No Time to Die"]
+print(bondMovies.contains("Frozen"))
+
+//sort array//
+let cities = ["London", "Tokyo", "Rome", "Budapest"]
+print(cities.sorted())
+
+let numberSort = [83, 47, 12, 9, 28, 6]
+print(numberSort.sorted())
+
+//reverse sort, just remembers that its reversed//
+let presidents = ["Bush", "Obama", "Trump", "Biden"]
+let reversedPresidents = presidents.reversed()
+print(reversedPresidents)
+
+//dictionaries//
+let employee2 = [
+    "name": "Taylor Swift",
+    "job": "Singer",
+    "location": "Nashville"
+]
+
+//default to always get something back//
+print(employee2["name", default: "Unknown"])
+print(employee2["job", default: "Unknown"])
+print(employee2["location", default: "Unknown"])
+print(employee2["status", default: "Unknown"])
+print(employee2["manager", default: "Unknown"])
+
+// using different data types together//
+let hasGraduated = [
+    "Eric": false,
+    "Maeve": true,
+    "Otis": false
+]
+
+let olympics2 = [
+    2012: "London",
+    2016: "Rio de Janeiro",
+    2021: "Tokyo"
+]
+
+print(olympics2[2012, default: "unknown"])
+
+var heights2 = [String: Int]()
+heights2["Yao Ming"] = 229
+heights2["Shaquille O'Neal"] = 216
+heights2["LeBron James"] = 206
+
+//can be overwritten//
+var archEnemies = [String: String]()
+archEnemies["Batman"] = "The Joker"
+archEnemies["Superman"] = "Lex Luthor"
+archEnemies["Batman"] = "Penguin"
+
+
+//sets//
+let actors2 = Set([
+    "Denzel Washington",
+    "Tom Cruise",
+    "Niclolas Cage",
+    "Samuel L Jackson"
+])
+
+print(actors2)
+
+
+var actors3 = Set<String>()
+actors3.insert("Denzel Washington")
+actors3.insert("Tom Cruise")
+actors3.insert("Nicolas Cage")
+actors3.insert("Samuel L Jackson")
+print(actors3)
+
+
+//using enums//
+enum Weekday {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+}
+
+var day = Weekday.monday
+day = Weekday.tuesday
+day = Weekday.wednesday
+
+//other way of writing the same enum//
+enum Weekday2 {
+    case monday, tuesday, wednesday, thursday, friday
+}
+
+var day2 = Weekday2.monday
+day2 = .tuesday
+day2 = .friday
+
