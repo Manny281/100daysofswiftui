@@ -86,3 +86,13 @@ print("100 - 50 is \(100 - 50)")
 //used for injecting custon data into strings//
 var city1 = "Cardiff"
 var message1 = "Welcome to \(city1)!"
+
+
+//checkpoint 1//
+//converting Celsius to Fehrenheit//
+let Celsius = 67.0
+let Fahrenheit = Celsius * 9 / 5 + 32
+print("\(Celsius)°C is \(Fahrenheit)°F")
+
+
+
