@@ -10,11 +10,25 @@ let beatles = [john, paul, george, ringo]
 beatles[0]
 beatles[1]
 
+let players = ["Player One", "Player Two", "Player Three"]
+players[1]
+
 //sets are faster//
 let colors = Set(["red", "green", "blue"])
 
+let shapes = Set(["circle", "square", "triangle"])
+
+//using an array would be a better fit//
+let red = 3
+let green = 5
+let blue = 4
+
+let colorLetters = Set([red, green, blue])
+
 //unordered, duplicates get ignored//
 let colors2 = Set(["red", "greeen", "blue", "red", "blue"])
+
+let shapes2 = Set(["circle", "square", "circle", "square"])
 
 //sets and arrays//
 let arrayOfBlogCategories: [String] = ["Swift", "Debuging", "Xcode", "Workflow", "Optimization"]
@@ -32,6 +46,18 @@ name.0
 name.1
 name.first
 name.last
+
+var playerOne = (first: "Player", last: "One", age: 28, level: 2)
+playerOne.0
+playerOne.1
+playerOne.2
+playerOne.3
+playerOne.first
+playerOne.last
+playerOne.age
+playerOne.level
+
+print(playerOne.level)
 
 //tuple version//
 var website = (name: "Apple", url: "www.apple.com")
@@ -152,4 +178,16 @@ enum Planet: Int {
 
 let earth = Planet(rawValue: 2)
 
+
+enum Music {
+    case play
+    case stop
+    case skip
+    case volumeRaise(raise: Int)
+    case volumeLower(lower: Int)
+    case fastforward(speed: Int)
+    case rewind(speedBack: Int)
+}
+
+let volume = Music.volumeLower(lower: 12)
 
