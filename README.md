@@ -19,3 +19,8 @@ Day Three: Arrays, dictionaries, sets and enums PLUS real day 2 stuff : Booleans
     After redoing the arrays, dictionaries, sets, and enums in the correct section i felt it was taught better and had a better and deeper understanding of the different ways to use them.
     Booling and string interpolation felt more like a review because of my basic understanding on those things already. 
     The checkpoint / mini code challenge was fun. At first i overcomplicated it trying to get user input and creating an empty variable. After just breaking it down, it was only 3 lines of code and very simple. I need to get used to logical thinking and maybe go back and review my old book on programming logic.
+
+Day Four: type annotations and checkpoint 2 :
+    Learned multiple ways to write the same line of code using explicit type and inference type . Explicit type is mainly used for empty variables/arrays or any of the rest. It can also be a personal preference. inference type if faster to write and could appear simpler and easier to change variable to a different type. Unless you need to use a certain type its a person preference.
+
+    The coding challenge was simple. I wrote half the code then I couldnt figure out how to only print the unique items number. I knew that sets doesn't use duplicates but i got confused when it was asking to create array. It was just me overthinking again. I then read the hint and relearned that i could create a set from an array so i made a set using the array and printed the unique items with count. 
