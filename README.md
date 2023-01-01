@@ -23,4 +23,10 @@ Day Three: Arrays, dictionaries, sets and enums PLUS real day 2 stuff : Booleans
 Day Four: type annotations and checkpoint 2 :
     Learned multiple ways to write the same line of code using explicit type and inference type . Explicit type is mainly used for empty variables/arrays or any of the rest. It can also be a personal preference. inference type if faster to write and could appear simpler and easier to change variable to a different type. Unless you need to use a certain type its a person preference.
 
-    The coding challenge was simple. I wrote half the code then I couldnt figure out how to only print the unique items number. I knew that sets doesn't use duplicates but i got confused when it was asking to create array. It was just me overthinking again. I then read the hint and relearned that i could create a set from an array so i made a set using the array and printed the unique items with count. 
+    The coding challenge was simple. I wrote half the code then I couldnt figure out how to only print the unique items number. I knew that sets doesn't use duplicates but i got confused when it was asking to create array. It was just me overthinking again. I then read the hint and relearned that i could create a set from an array so i made a set using the array and printed the unique items with count.
+
+Day Five: Conditions:
+    Learned mutliple ways to write conditions; If , switch, and ternary.
+    I played around with the ones that i wasn't so sure about to see how they work and to make sure i could actually use them to write code. The main thing i was wondering is when to use each one and i now have a basic understanding of when. This lesson took a lot longer because i spent a lot of time playing around with what i had learned.
+
+    
