@@ -30,3 +30,6 @@ Day Five: Conditions:
     I played around with the ones that i wasn't so sure about to see how they work and to make sure i could actually use them to write code. The main thing i was wondering is when to use each one and i now have a basic understanding of when. This lesson took a lot longer because i spent a lot of time playing around with what i had learned.
 
     
+Day Six : Loops
+    Learned about for loops, how to nest them, and range operators. I felt like i had a pretty good understanding and passed the test. Also learned while loops and how they run until the conditon is false. I felt like i had a good understanding but i ended up failing most of the questions on the test. I lost all motivation because i thought i was understanding it but i just kept pushing through. Then when to use break and continue and how they work. 
+    When i got to checkpoint 3 for the coding challenge i was able to write the code fairly quick without having to look at the hints . That made me feel excited even thought it eas something so simple to me it felt like a big deal. The main reason being that i failed the test section but i was able to write the code on my own.
