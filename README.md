@@ -36,3 +36,10 @@ Day Six : Loops
 
 Day Seven: Functions Part One
     Learned about functions and using them when code needs to be repeated throughout. Then using parameters to accept inputm returning values, and customizing parameter labels by using underscore or adding a second name. I had fun with this section playing around and writing code with what i had learned. Functions used to look so confusing but not as bad as i made it seem, so far that is. I was able to complete the mini challenge and rewrote some of the earlier code as functions that accept parameters.
+
+Day Eight: Functions Part Two
+    Today i learned how to handle errors in the functions by defining them in an enum and using do, try and catch. Another section of the lesson creating default values in teh parameter of the function.
+
+    I was pretty confident writing the code for the checkpoint challenge but after i completed it i realized i did the math part wrong. Then once corrected, i was able to get it to print what i wanted it to, but instead of of printing the error of no root i would get a zero instead. (when i had the math wrong it would print the error). After giving up , since this all new to me, i looked at the solution and i guess i just overcomplicated the code and realized what i was doing wrong.
+
+    Over time and with more practice i will write cleaner code, stop overthinking, and be able to break down the code step by step writing pseudocode if i need to.
