@@ -43,3 +43,8 @@ Day Eight: Functions Part Two
     I was pretty confident writing the code for the checkpoint challenge but after i completed it i realized i did the math part wrong. Then once corrected, i was able to get it to print what i wanted it to, but instead of of printing the error of no root i would get a zero instead. (when i had the math wrong it would print the error). After giving up , since this all new to me, i looked at the solution and i guess i just overcomplicated the code and realized what i was doing wrong.
 
     Over time and with more practice i will write cleaner code, stop overthinking, and be able to break down the code step by step writing pseudocode if i need to.
+
+Day Nine: Closures
+    Tpday i learned about how to make and use closures and why they are important to know about in swift. After creating the closure started with accpeting parameters then returning values. Trailing closure is one of the things i am currently stuck on. I can write simple stuff but accepting functions in the parameters keeps confusing me. I start to feel like i am understanding it then again im stuck all over again. 
+
+    I am currently having a hard time with some of the things so i will do more research and practice messing around with each thing i learn to get a better understanding. I hard a hard time doing the challenge but once i saw the solution i could read what was going on i just couldnt create that myself. 
