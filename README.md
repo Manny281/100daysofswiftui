@@ -51,3 +51,6 @@ Day Nine: Closures
 
 Day Ten: Structs Part one
 	I learned how to create structs and using mutating to be able to change constants within. Used compute property to automatically compute the values each time it is called. Then I used observers didSet and willSet to run pieces of code before and when the property is changed. The final thing I learned today was how to create custom initializers and how to customize them.
+
+Day 11 : structs part 2 ; Access Control, Computed Properties, Methods & checkpoint 6
+	Today I learned about access control and why it’s useful and how it can be applied variables . Then I learned about static properties and methods with some examples on when and how to use static.  The challenge wasn’t too hard using what I had learned but my solution was very different from the course solution. 
