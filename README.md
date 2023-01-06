@@ -48,3 +48,6 @@ Day Nine: Closures
     Tpday i learned about how to make and use closures and why they are important to know about in swift. After creating the closure started with accpeting parameters then returning values. Trailing closure is one of the things i am currently stuck on. I can write simple stuff but accepting functions in the parameters keeps confusing me. I start to feel like i am understanding it then again im stuck all over again. 
 
     I am currently having a hard time with some of the things so i will do more research and practice messing around with each thing i learn to get a better understanding. I hard a hard time doing the challenge but once i saw the solution i could read what was going on i just couldnt create that myself. 
+
+Day Ten: Structs Part one
+	I learned how to create structs and using mutating to be able to change constants within. Used compute property to automatically compute the values each time it is called. Then I used observers didSet and willSet to run pieces of code before and when the property is changed. The final thing I learned today was how to create custom initializers and how to customize them.
