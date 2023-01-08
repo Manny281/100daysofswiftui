@@ -59,3 +59,6 @@ Day 12: Classes & checkpoint 7
     Today I learned about classes and how they differ from strict. I learned how to add initializers and how a deinitializer works. The most important thing I learned about classes was how they inherit properties and methods from parent classes. 
 	
     The challenge felt pretty simple because I understood the lessons better than I understood the past few days plus I have been looking through apples soft documentation to get a deeper understanding of what I have been learning . I will also dig deeper into computer science to get an even deeper understanding of it . I put web development on hold and spend up to 8 hours learning swift and practicing code because I am most excited about creating apps and working with iOS.     
+
+Day 13 : Protocols and extensions & checkpoint 8 
+    Today I learned about Protocol, extensions, protocol extensions and the basics of how opaque return types work. No I have a basic understanding about how protocols and extensions work as well as when and why to use each one . The challenge for checkpoint 8 felt easy to complete and I was able to write the code for it fairly quickly. After completing each day I usually spend about an hour looking through Apple swift documentation to get a better understanding and even if I don’t remember I will know where I can go to look for specific syntax 
