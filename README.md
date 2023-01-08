@@ -54,3 +54,8 @@ Day Ten: Structs Part one
 
 Day 11 : structs part 2 ; Access Control, Computed Properties, Methods & checkpoint 6
 	Today I learned about access control and why it’s useful and how it can be applied variables . Then I learned about static properties and methods with some examples on when and how to use static.  The challenge wasn’t too hard using what I had learned but my solution was very different from the course solution. 
+
+Day 12: Classes & checkpoint 7 
+    Today I learned about classes and how they differ from strict. I learned how to add initializers and how a deinitializer works. The most important thing I learned about classes was how they inherit properties and methods from parent classes. 
+	
+    The challenge felt pretty simple because I understood the lessons better than I understood the past few days plus I have been looking through apples soft documentation to get a deeper understanding of what I have been learning . I will also dig deeper into computer science to get an even deeper understanding of it . I put web development on hold and spend up to 8 hours learning swift and practicing code because I am most excited about creating apps and working with iOS.     
