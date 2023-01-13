@@ -62,3 +62,10 @@ Day 12: Classes & checkpoint 7
 
 Day 13 : Protocols and extensions & checkpoint 8 
     Today I learned about Protocol, extensions, protocol extensions and the basics of how opaque return types work. No I have a basic understanding about how protocols and extensions work as well as when and why to use each one . The challenge for checkpoint 8 felt easy to complete and I was able to write the code for it fairly quickly. After completing each day I usually spend about an hour looking through Apple swift documentation to get a better understanding and even if I don’t remember I will know where I can go to look for specific syntax 
+
+Day 14 : Optionals & Checkpoint 9
+	Today I learned about optionals . Then how to unwrap optionals using multiple ways such as guard and nil coalescing. I also learned how to chain multiple options together. There is an alternative to do, try and catch using optionals to handle errors from a function.
+
+	The challenge wasn’t too hard even though though I only seen to understand them very little. I will spend the rest of tonight looking through the Swift documentation to get a better understanding of some of the topics I was struggling with. I know I probably won’t remember everything but I just want to understand where to use it when I need it.
+
+Day 15 : Wwift Review 
