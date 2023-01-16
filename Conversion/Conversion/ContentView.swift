@@ -9,19 +9,33 @@ import SwiftUI
     
 struct ContentView: View {
     @State private var tempInput = 0.0
-    @State private var defaultFormatIn = "Fahrenheit"
-    @State private var defaultFormatOut = "Fahrenheit"
+    //@State private var selectIn = 0
+    //@State private var selectOut = 1
+    @State private var selectIn = "Fahrenheit"
+    @State private var selectOut = "Fahrenheit"
     
-    let tempFormatIn = ["Celcius", "Fahrenheit", "Kelvin"]
-    let tempFormatOut = ["Celcius", "Fahrenheit", "Kelvin"]
+    let tempFormats = ["Celsius", "Fahrenheit", "Kelvin"]
     
     @FocusState private var numIsFocused: Bool
     
-    var tempOutput: Double {
+    private var convertedTemp : Double {
+        var result = tempInput
         
-        let convertedTemp = 0.0
+        switch(selectIn) {
+        case "Celsius" : break
+        case "Fahrenheit" : result = (result - 32) * 5 / 9
+        case "Kelvin" : result = result - 273.15
+        default : break
+        }
         
-        return convertedTemp
+        switch(selectOut) {
+        case "Celsius" : break
+        case "Fahrenheit" : result = result * (9 / 5) + 32
+        case "Kelvin" : result = result + 273.15
+        default : break
+        }
+        
+        return result
     }
 
     var body: some View {
@@ -32,29 +46,42 @@ struct ContentView: View {
                         .keyboardType(.decimalPad)
                         .focused($numIsFocused)
                         .multilineTextAlignment(.center)
-                    
-                    Picker("Format", selection: $defaultFormatIn) {
-                        ForEach(tempFormatIn, id: \.self) {
-                            Text($0)
-                        }
-                    }
-                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Enter Temperature")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 Section {
-                    Picker("Format", selection: $defaultFormatOut) {
-                        ForEach(tempFormatOut, id: \.self) {
+                    Picker("Format", selection: $selectIn) {
+                        ForEach(tempFormats, id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(.segmented)
-                    
-                Text(tempOutput, format: .number)
+                } header: {
+                    Text("Units From")
                         .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Section {
+                    Picker("Format", selection: $selectOut) {
+                        ForEach(tempFormats, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Units To")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Section {
+                    Text("\(tempInput, specifier: "%.2f") \(selectIn) : \(convertedTemp, specifier: "%.2f") \(selectOut)")
+                            .frame(maxWidth: .infinity, alignment: .center)
                         
                 }
             }
-            .navigationTitle("Converter")
+            .navigationTitle("Temperature Converter")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
