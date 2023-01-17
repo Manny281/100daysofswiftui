@@ -9,16 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingScore = false
+    @State private var finalScore = false
     @State private var scoreTitle = ""
+    @State private var score = 0
+    @State private var counter = 1
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Monaco", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
+
     
     var body: some View {
         ZStack {
             RadialGradient(stops: [
-                .init(color: Color(red: 0.2, green: 0.2, blue: 0.45), location: 0.3),
-                .init(color: Color(red: 0.76, green: 0.15, blue: 0.2), location: 0.3)
+                .init(color: Color(red: 0.4627, green: 0.8392, blue: 1.0), location: 0.10),
+                .init(color: Color(red: 0.24, green: 0.56, blue: 1.0), location: 0.80)
             ], center: .top, startRadius: 200, endRadius: 700)
                 .ignoresSafeArea()
             VStack {
@@ -28,7 +32,7 @@ struct ContentView: View {
                     .font(.largeTitle.bold())
                     .foregroundColor(.white)
                 
-                VStack(spacing: 15)  {
+                VStack(spacing: 32)  {
                     VStack {
                         Text("Tap the flag of")
                             .foregroundColor(.secondary)
@@ -44,8 +48,8 @@ struct ContentView: View {
                         } label: {
                             Image(countries[number])
                                 .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .shadow(color: .blue, radius: 10)
                         }
                     }
                 }
@@ -57,7 +61,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 
-                Text("Score: ???")
+                Text("Score: \(score)")
                     .foregroundColor(.white)
                     .font(.title.bold())
                 
@@ -68,18 +72,39 @@ struct ContentView: View {
         .alert(scoreTitle, isPresented: $showingScore) {
             Button("Continue", action: askQuestion)
         } message: {
-            Text("Your score is ???")
+            Text("Your score is \(score)")
+        }
+        
+        .alert(scoreTitle, isPresented: $finalScore) {
+            Button("Reset", action: reset)
+        } message: {
+        Text("Your final score is \(score) / \(counter)")
         }
     }
     
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
+            score += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
         }
         
-        showingScore = true
+        if counter == 8 {
+            scoreTitle = "Game Over"
+            
+            finalScore = true
+        } else {
+            showingScore = true
+            counter += 1
+        }
+    }
+    
+    func reset() {
+        score = 0
+        counter = 1
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
     }
     
     func askQuestion() {
