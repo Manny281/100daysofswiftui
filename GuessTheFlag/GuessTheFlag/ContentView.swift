@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+    }
+}
+
 struct ContentView: View {
     @State private var showingScore = false
     @State private var finalScore = false
@@ -29,8 +37,7 @@ struct ContentView: View {
                 Spacer ()
                 
                 Text("Guess the Flag")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .modifier(Title())
                 
                 VStack(spacing: 32)  {
                     VStack {
@@ -46,10 +53,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .shadow(color: .blue, radius: 10)
+                            FlagImage(images: countries[number])
                         }
                     }
                 }
@@ -62,7 +66,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Score: \(score)")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(red: 0.5627, green: 0.9392, blue: 1.0))
                     .font(.title.bold())
                 
                 Spacer()
@@ -111,7 +115,18 @@ struct ContentView: View {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
+    
+    struct FlagImage: View {
+        var images = String()
+        var body: some View {
+            Image(images)
+                .renderingMode(.original)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .shadow(color: .blue, radius: 10)
+        }
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
