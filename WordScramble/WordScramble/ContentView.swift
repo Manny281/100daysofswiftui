@@ -16,6 +16,17 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    var score: Int {
+        var numOfLetters = 0
+        let numOfWords = usedWords.count
+        
+        usedWords.forEach { numOfLetters += $0.count }
+        
+        let playerScore = numOfWords + numOfLetters
+        
+        return playerScore
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -34,6 +45,15 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(rootWord)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Reset", action: startGame)
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Score: \(score)")
+                }
+            }
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
             .alert(errorTitle, isPresented: $showingError) {
@@ -63,6 +83,17 @@ struct ContentView: View {
             wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
             return
         }
+        
+        guard isShort(word: answer) else {
+            wordError(title: "Too short", message: "Use three or more letters!")
+            return
+        }
+        
+        guard isSame(word: answer) else {
+            wordError(title: "Try Again", message: "At least try!")
+            return
+        }
+        
         withAnimation {
             usedWords.insert(answer, at: 0)
         }
@@ -74,6 +105,7 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startwordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                usedWords.removeAll()
                 return
             }
         }
@@ -107,11 +139,28 @@ struct ContentView: View {
         return misspelledRange.location == NSNotFound
     }
     
+    func isShort(word: String) -> Bool {
+        if newWord.count < 3 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func isSame(word: String) -> Bool {
+        if newWord == rootWord {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func wordError(title: String, message: String) {
         errorTitle = title
         errorMessage = message
         showingError = true
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
