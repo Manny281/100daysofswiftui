@@ -8,6 +8,16 @@
 import Foundation
 
 class Expenses: ObservableObject {
+    //store an array of ExpenseItems inside a single object
+    var personalItems : [ExpenseItem] {
+            get { items.filter { $0.type == "Personal" } }
+            set { }
+        }
+
+    var businessItems: [ExpenseItem] {
+        get { items.filter { $0.type == "Business" } }
+    }
+    
     @Published var items = [ExpenseItem]() {
         didSet {
             let encoder = JSONEncoder()

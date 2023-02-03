@@ -13,3 +13,4 @@ struct ExpenseItem: Identifiable, Codable {
     let type: String
     let amount: Double
 }
+
