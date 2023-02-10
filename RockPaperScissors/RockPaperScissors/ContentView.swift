@@ -24,6 +24,11 @@ struct ContentView: View {
     @State private var choices = ["✊", "✋", "✌️"]
     @State private var computerMove = Int.random(in: 0...2)
     
+    @State private var scale = 1.0
+    @State private var cpuscale = 1.0
+    @State private var angle = -90.0
+    @State private var fade = 1.0
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(red: 0.4627, green: 0.8392, blue: 1.0), .blue] ), startPoint: .top, endPoint: .bottom)
@@ -48,6 +53,10 @@ struct ContentView: View {
                         .foregroundColor(.white)
                     Text(choices[computerMove])
                         .font(.system(size:200))
+                        .scaleEffect(cpuscale)
+                        .animation(.easeIn, value: cpuscale)
+                        .rotationEffect(.degrees(angle))
+                        .animation(.easeIn, value: angle)
                 }
                 
                 Spacer()
@@ -67,6 +76,10 @@ struct ContentView: View {
                             .padding(.horizontal, 15)
                             .font(.system(size:90))
                             .shadow(color: .blue, radius: 7)
+                            .scaleEffect(choices[number] == user ? scale : 1.0)
+                            .animation(.easeIn, value: scale)
+                            .opacity(choices[number] == user ? 1 : fade)
+                            
                         }
                     }
                 }
@@ -104,12 +117,17 @@ struct ContentView: View {
     
     func ClosedHand() {
         computerMove = 0
+        scale = 1.0
+        cpuscale = 0.8
+        angle = -90.0
+        fade = 1.0
     }
     
     func reset() {
         ClosedHand()
         totalScore = 0
         round = 1
+        fade = 1.0
     }
     
     func WhenTapped(_ number: Int) {
@@ -139,6 +157,13 @@ struct ContentView: View {
         } else {
             ready = true
         }
+        
+        if ready == true || showingFinalScore == true{
+            scale += 0.4
+            cpuscale += 0.4
+            angle = 0
+            fade = 0.25
+            }
     }
 }
 
