@@ -41,6 +41,10 @@ struct ContentView: View {
     @State private var multiples = 2
     @State private var round = 1
     
+    @State private var answer = Int()
+    
+    @FocusState private var numIsFocused: Bool
+    
     let roundChoices = ["5 rounds", "10 rounds", "20 rounds"]
     var body: some View {
         ZStack {
@@ -49,13 +53,30 @@ struct ContentView: View {
                 .init(color: Color(red: 1, green: 0, blue: 0.431), location: 1)
             ], center: .top, startRadius: 200, endRadius: 700)
             .ignoresSafeArea()
-            
+
             VStack {
                 Text("Multiplication")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .shadow(color: Color(red: 1, green: 0, blue: 0.431), radius: 40)
+                
+                VStack {
+                    Text("Round \(round) / selected rounds")
+                } .foregroundColor(.white)
+            
                 Spacer()
+                
+                VStack {
+                    Text("num1 X num2 = ")
+                    
+                    TextField("Enter Your Answer", value: $answer, format: .number)
+                        .keyboardType(.numberPad)
+                        .focused($numIsFocused)
+                        .multilineTextAlignment(.center)
+                } .font(.largeTitle)
+                
+                Spacer()
+                
                 VStack {
                     Text("Select Multiplication Table")
                         .modifier(SetUpText())
@@ -77,7 +98,18 @@ struct ContentView: View {
                         }
                     }
                 } .modifier(GlassFrame())
-                Spacer()
+                
+                VStack {
+                    Button {
+                        // code
+                    } label: {
+                        Text("Start")
+                            .padding(.horizontal, 20)
+                            .font(.title2)
+                    } .modifier(OrangeButtons())
+                        .shadow(radius: 15.0)
+                }
+                
                 Spacer()
             }
             .padding()
