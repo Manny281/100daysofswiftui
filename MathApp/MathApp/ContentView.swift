@@ -38,14 +38,16 @@ struct SetUpText: ViewModifier {
 }
 
 struct ContentView: View {
-    @State private var multiples = 2
-    @State private var round = 1
+    @StateObject var settings = GameSettings()
     
-    @State private var answer = Int()
+    @State private var setupIsShowing = true
+    @State private var gameIsShowing = false
     
-    @FocusState private var numIsFocused: Bool
+    @State private var alertIsShowing = false
+    @State private var alertTitle = ""
     
     let roundChoices = ["5 rounds", "10 rounds", "20 rounds"]
+    
     var body: some View {
         ZStack {
             RadialGradient(stops: [
@@ -60,29 +62,17 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .shadow(color: Color(red: 1, green: 0, blue: 0.431), radius: 40)
                 
-                VStack {
-                    Text("Round \(round) / selected rounds")
-                } .foregroundColor(.white)
-            
-                Spacer()
                 
-                VStack {
-                    Text("num1 X num2 = ")
-                    
-                    TextField("Enter Your Answer", value: $answer, format: .number)
-                        .keyboardType(.numberPad)
-                        .focused($numIsFocused)
-                        .multilineTextAlignment(.center)
-                } .font(.largeTitle)
                 
                 Spacer()
                 
                 VStack {
                     Text("Select Multiplication Table")
                         .modifier(SetUpText())
-                    Stepper("\(multiples)", value: $multiples, in: 2...12)
+                    Stepper("\(settings.multiples)", value: $settings.multiples, in: 2...12)
                 } .padding(.horizontal, 10)
                     .modifier(GlassFrame())
+                
                 
                 VStack {
                     Text("Select number of rounds")
@@ -91,6 +81,7 @@ struct ContentView: View {
                         ForEach(0..<3) { num in
                             Button {
                                 print("button pressed")
+                                gameIsShowing.toggle()
                             } label: {
                                 Text(roundChoices[num])
                             }
@@ -101,20 +92,43 @@ struct ContentView: View {
                 
                 VStack {
                     Button {
-                        // code
+                        startPressed()
+
                     } label: {
                         Text("Start")
                             .padding(.horizontal, 20)
                             .font(.title2)
                     } .modifier(OrangeButtons())
                         .shadow(radius: 15.0)
+                        .sheet(isPresented: $gameIsShowing) {
+                            GameView(settings: GameSettings())
+                        }
                 }
                 
                 Spacer()
             }
             .padding()
         }
+        .alert(alertTitle, isPresented: $alertIsShowing) {
+                  Button("Continue", action: errorStart)
+        } message: {
+                  Text("Please select number of rounds")
+        }
+    } 
+    
+    func startPressed() {
+        if settings.selectedRounds < 0 {
+            setupIsShowing.toggle()
+            gameIsShowing.toggle()
+        } else {
+            alertIsShowing.toggle()
+            alertTitle = "Not So Fast!"
+        }
     }
+    
+    func errorStart() {
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
