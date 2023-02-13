@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F27816629995DAD00A9FEAF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27816529995DAD00A9FEAF /* GameView.swift */; };
-		3F27816A2999783500A9FEAF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2781692999783500A9FEAF /* Settings.swift */; };
 		3F4088692988B82800B0D521 /* MathAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4088682988B82800B0D521 /* MathAppApp.swift */; };
 		3F40886B2988B82800B0D521 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40886A2988B82800B0D521 /* ContentView.swift */; };
 		3F40886D2988B82900B0D521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F40886C2988B82900B0D521 /* Assets.xcassets */; };
@@ -16,8 +14,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F27816529995DAD00A9FEAF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		3F2781692999783500A9FEAF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3F4088652988B82800B0D521 /* MathApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4088682988B82800B0D521 /* MathAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathAppApp.swift; sourceTree = "<group>"; };
 		3F40886A2988B82800B0D521 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,8 +53,6 @@
 			children = (
 				3F4088682988B82800B0D521 /* MathAppApp.swift */,
 				3F40886A2988B82800B0D521 /* ContentView.swift */,
-				3F2781692999783500A9FEAF /* Settings.swift */,
-				3F27816529995DAD00A9FEAF /* GameView.swift */,
 				3F40886C2988B82900B0D521 /* Assets.xcassets */,
 				3F40886E2988B82900B0D521 /* Preview Content */,
 			);
@@ -144,8 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F40886B2988B82800B0D521 /* ContentView.swift in Sources */,
-				3F27816629995DAD00A9FEAF /* GameView.swift in Sources */,
-				3F27816A2999783500A9FEAF /* Settings.swift in Sources */,
 				3F4088692988B82800B0D521 /* MathAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
