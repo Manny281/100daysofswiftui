@@ -119,7 +119,6 @@ struct ContentView: View {
                 VStack {
                     Button {
                         startPressed()
-                        GameView(multiples: $multiples, score: $score, selectedRounds: $selectedRounds, gameIsShowing: $gameIsShowing, mathSymbol: $mathSymbol, subtract: $subtract).checkSubtracting()
                     } label: {
                         Text("Start")
                             .padding(.horizontal, 20)
@@ -215,7 +214,7 @@ struct GameView: View {
     @State private var round = 1
     @State private var textfield = true
     
-    @State private var display = ""
+    //@State private var display = ""
     
     @State private var correctAnswer = 0
     
@@ -226,6 +225,18 @@ struct GameView: View {
     @State private var endAlertTitle = ""
     
     @FocusState private var numIsFocused: Bool
+    
+    private var display: String {
+        if subtract == true {
+            if randomNum > multiples {
+                return "\(randomNum) \(mathSymbol) \(multiples) = "
+            } else {
+                return "\(multiples) \(mathSymbol) \(randomNum) = "
+            }
+        } else {
+            return "\(randomNum) \(mathSymbol) \(multiples) = "
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -319,21 +330,7 @@ struct GameView: View {
     }
     
     func next() {
-        checkSubtracting()
-    }
-    
-    func checkSubtracting() {
         randomNum = Int.random(in: 0...12)
-        
-        if subtract == true {
-            if randomNum > multiples {
-                display = "\(randomNum) \(mathSymbol) \(multiples) = "
-            } else {
-                display = "\(multiples) \(mathSymbol) \(randomNum) = "
-            }
-        } else {
-            display = "\(randomNum) \(mathSymbol) \(multiples) = "
-        }
     }
     
     func mathType(_ symbol: String) {
