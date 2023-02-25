@@ -38,11 +38,14 @@ struct SetUpText: ViewModifier {
 }
 
 struct ContentView: View {
-
     //game settings
     @State private var multiples = 2
     @State var score = 0
     @State var selectedRounds = 0
+    @State var selectedType = 0
+    @State var mathSelectedText = ""
+    @State var mathSymbol = ""
+    @State var subtract = false
     
     @State private var setupIsShowing = true
     @State private var gameIsShowing = false
@@ -52,6 +55,7 @@ struct ContentView: View {
     @State private var alertTitle = ""
     
     let roundChoices = ["5 rounds", "10 rounds", "20 rounds"]
+    let typeChoices = ["Multiply", "Add", "Subtract"]
     
     var body: some View {
         ZStack {
@@ -62,7 +66,7 @@ struct ContentView: View {
             .ignoresSafeArea()
 
             VStack {
-                Text("Multiplication")
+                Text("Math App")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .shadow(color: Color(red: 1, green: 0, blue: 0.431), radius: 40)
@@ -72,12 +76,29 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack {
-                    Text("Select Multiplication Table")
+                    Text("Select Math Type")
+                        .modifier(SetUpText())
+                    
+                    HStack {
+                        ForEach(0..<3) { type in
+                            Button {
+                                mathTypeSelected(type)
+                                print("button pressed")
+                            } label: {
+                                Text(typeChoices[type])
+                            }
+                            .frame(maxWidth: .infinity)
+                            .modifier(OrangeButtons())
+                        }
+                    }
+                } .modifier(GlassFrame())
+                
+                VStack {
+                    Text("Select \(mathSelectedText) Table")
                         .modifier(SetUpText())
                     Stepper("\(multiples)", value: $multiples, in: 2...12)
                 } .padding(.horizontal, 10)
                     .modifier(GlassFrame())
-                
                 
                 VStack {
                     Text("Select number of rounds")
@@ -98,7 +119,7 @@ struct ContentView: View {
                 VStack {
                     Button {
                         startPressed()
-
+                        GameView(multiples: $multiples, score: $score, selectedRounds: $selectedRounds, gameIsShowing: $gameIsShowing, mathSymbol: $mathSymbol, subtract: $subtract).checkSubtracting()
                     } label: {
                         Text("Start")
                             .padding(.horizontal, 20)
@@ -107,7 +128,7 @@ struct ContentView: View {
                         .shadow(radius: 15.0)
                         .opacity(buttonHidden ? 0 : 1)
                         .sheet(isPresented: $gameIsShowing, onDismiss: dismissed) {
-                            GameView(multiples: $multiples, score: $score, selectedRounds: $selectedRounds, gameIsShowing: $gameIsShowing)
+                            GameView(multiples: $multiples, score: $score, selectedRounds: $selectedRounds, gameIsShowing: $gameIsShowing, mathSymbol: $mathSymbol, subtract: $subtract)
                         }
                 }
                 
@@ -125,6 +146,26 @@ struct ContentView: View {
     func dismissed() {
         buttonHidden = true
         score = 0
+        mathSelectedText = ""
+    }
+    
+    func mathTypeSelected(_ type: Int) {
+        switch type {
+        case 0:
+            mathSelectedText = "Multiplication"
+            mathSymbol = "x"
+            subtract = false
+        case 1:
+            mathSelectedText = "Addition"
+            mathSymbol = "+"
+            subtract = false
+        case 2:
+            mathSelectedText = "Subtraction"
+            mathSymbol = "-"
+            subtract = true
+        default:
+            mathSymbol = "Error"
+        }
     }
     
     func numOfRounds(_ num: Int){
@@ -139,7 +180,7 @@ struct ContentView: View {
             selectedRounds = 0
         }
         
-        if selectedRounds > 0 {
+        if selectedRounds > 0 && mathSelectedText != ""{
             buttonHidden = false
         } else {
             buttonHidden = true
@@ -158,6 +199,7 @@ struct ContentView: View {
     
     func errorStart() {
     }
+    
 }
 
 struct GameView: View {
@@ -165,11 +207,17 @@ struct GameView: View {
     @Binding var score: Int
     @Binding var selectedRounds: Int
     @Binding var gameIsShowing: Bool
+    @Binding var mathSymbol: String
+    @Binding var subtract: Bool
     
     @State private var answer: Int?
     @State private var randomNum = Int.random(in: 0...12)
     @State private var round = 1
     @State private var textfield = true
+    
+    @State private var display = ""
+    
+    @State private var correctAnswer = 0
     
     @State private var check = ""
     @State private var buttonHidden = true
@@ -210,7 +258,7 @@ struct GameView: View {
                     Spacer()
                     
                     VStack {
-                        Text("\(randomNum) X \(multiples) = ")
+                        Text("\(display)")
                             .padding(.vertical, 40)
                             .font(.system(size: 80))
                         
@@ -271,11 +319,48 @@ struct GameView: View {
     }
     
     func next() {
+        checkSubtracting()
+    }
+    
+    func checkSubtracting() {
         randomNum = Int.random(in: 0...12)
+        
+        if subtract == true {
+            if randomNum > multiples {
+                display = "\(randomNum) \(mathSymbol) \(multiples) = "
+            } else {
+                display = "\(multiples) \(mathSymbol) \(randomNum) = "
+            }
+        } else {
+            display = "\(randomNum) \(mathSymbol) \(multiples) = "
+        }
+    }
+    
+    func mathType(_ symbol: String) {
+        switch symbol {
+        case "x":
+            subtract = false
+            correctAnswer = randomNum * multiples
+        case "+":
+            subtract = false
+            correctAnswer = randomNum + multiples
+        case "-":
+            subtract = true
+            if randomNum > multiples {
+                correctAnswer = randomNum - multiples
+            } else {
+                correctAnswer = multiples - randomNum
+            }
+        default:
+            print("error")
+            subtract = false
+        }
     }
     
     func checkAnswer() {
-        if answer == randomNum * multiples {
+        mathType(mathSymbol)
+        
+        if answer == correctAnswer {
             score += 5
             check = "Correct!"
         } else {
